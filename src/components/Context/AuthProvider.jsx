@@ -20,7 +20,9 @@ function AuthProvider({ children }) {
         setUser({ displayName, email, uid, photoURL });
         setIsLoading(false);
         navigate("/");
+        return;
       } else {
+        setIsLoading(false);
         navigate("/login");
       }
     });

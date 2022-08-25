@@ -1,6 +1,7 @@
 import { Avatar, Button, Typography } from "antd";
 import React from "react";
 import styled from "styled-components";
+import { auth } from "../firebase/config";
 
 const WrapperStyled = styled.div`
   display: flex;
@@ -21,7 +22,7 @@ function UserInfo(props) {
         <Avatar>A</Avatar>
         <Typography.Text className="username">name</Typography.Text>
       </div>
-      <Button ghost>Đăng xuất</Button>
+      <Button ghost onClick={()=>auth.signOut()}>Đăng xuất</Button>
     </WrapperStyled>
   );
 }
