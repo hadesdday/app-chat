@@ -20,5 +20,11 @@ firebase.analytics();
 const auth = firebase.auth();
 const db = firebase.firestore();
 
+//config firebase to run locally
+auth.useEmulator("http://localhost:9099");
+if (window.location.hostname === "localhost") {
+  db.useEmulator("localhost", "8081");
+}
+
 export { db, auth };
 export default firebase;

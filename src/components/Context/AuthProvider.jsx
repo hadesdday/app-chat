@@ -33,6 +33,7 @@ function AuthProvider({ children }) {
     };
   }, [navigate]);
   return (
+    //value ben duoi se giup cac component con co the truy xuat duoc du lieu tu provider thong qua hook useContext
     <AuthContext.Provider value={{ user }}>
       {isLoading ? <Spin /> : children}
     </AuthContext.Provider>
