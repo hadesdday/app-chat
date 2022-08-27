@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useMemo } from "react";
+import React, { createContext, useContext, useMemo, useState } from "react";
 import useFirestore from "../../hooks/useFirestore";
 import { AuthContext } from "./AuthProvider";
 
@@ -17,8 +17,15 @@ function AppProvider({ children }) {
   }, [uid]);
 
   const rooms = useFirestore("rooms", roomsCondition);
+
+  const [isAddRoomVisible, setIsAddRoomVisible] = useState(false);
+
   return (
-    <AppContext.Provider value={{ rooms }}>{children}</AppContext.Provider>
+    <AppContext.Provider
+      value={{ rooms, isAddRoomVisible, setIsAddRoomVisible }}
+    >
+      {children}
+    </AppContext.Provider>
   );
 }
 

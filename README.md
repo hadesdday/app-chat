@@ -1,7 +1,7 @@
 # How to start :
 
-npm start : Start the application
-firebase emulators:start : Start local firebase emulator ( pls cd to emulators first )
+<p>npm start : Start the application</p>
+<p>firebase emulators:start : Start local firebase emulator ( pls cd to emulators first )</p>
 
 # Getting Started with Create React App
 
