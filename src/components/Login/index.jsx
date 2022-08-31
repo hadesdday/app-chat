@@ -2,6 +2,7 @@ import { Button, Col, Row, Typography } from "antd";
 import React from "react";
 import firebase, { auth, db } from "../firebase/config";
 import { addDocument } from "../firebase/services";
+import { generateKeywords } from "../Helper/GenerateKeywords";
 
 const { Title } = Typography;
 
@@ -18,6 +19,7 @@ export default function Login() {
         photoURL: user.photoURL,
         uid: user.uid,
         providerId: additionalUserInfo.providerId,
+        keywords: generateKeywords(user.displayName),
       };
       addDocument("users", loggedUser);
     }
@@ -34,6 +36,7 @@ export default function Login() {
         photoURL: user.photoURL,
         uid: user.uid,
         providerId: additionalUserInfo.providerId,
+        keywords: generateKeywords(user.displayName),
       });
     }
   };
