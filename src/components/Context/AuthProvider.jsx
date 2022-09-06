@@ -1,7 +1,7 @@
-import { Spin } from "antd";
 import React, { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase/config";
+import LoadingModal from "../Modals/LoadingModal";
 
 export const AuthContext = createContext();
 
@@ -35,7 +35,7 @@ function AuthProvider({ children }) {
   return (
     //value ben duoi se giup cac component con co the truy xuat duoc du lieu tu provider thong qua hook useContext
     <AuthContext.Provider value={{ user }}>
-      {isLoading ? <Spin /> : children}
+      {isLoading ? <LoadingModal /> : children}
     </AuthContext.Provider>
   );
 }

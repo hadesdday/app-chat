@@ -4,6 +4,7 @@ import React, { useContext, useMemo, useState } from "react";
 import { AppContext } from "../Context/AppProvider";
 import { AuthContext } from "../Context/AuthProvider";
 import { db } from "../firebase/config";
+import { LoadingOutlined } from "@ant-design/icons";
 
 function DebounceSelect({ fetchOptions, debounceTimeout = 300, ...props }) {
   const [fetching, setFetching] = useState(false);
@@ -22,12 +23,14 @@ function DebounceSelect({ fetchOptions, debounceTimeout = 300, ...props }) {
     return debounce(loadOptions, debounceTimeout);
   }, [debounceTimeout, fetchOptions]);
 
+  const spinnerIcon = <LoadingOutlined style={{ fontSize: 25 }} spin />;
+
   return (
     <Select
       labelInValue
       filterOption={false}
       onSearch={debounceFetcher}
-      notFoundContent={fetching ? <Spin size="small" /> : null}
+      notFoundContent={fetching ? <Spin indicator={spinnerIcon} /> : null}
       {...props}
     >
       {options.map((opt) => (
